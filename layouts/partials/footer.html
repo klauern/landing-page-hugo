@@ -23,13 +23,25 @@
                 <p class="copyright text-muted small">Copyright &copy; {{ .Title }} All Rights Reserved</p>
             </div>
             <div class="col-md-4">
-		Built with <a href="https://gohugo.io">Hugo</a> and the
-		<a href="//github.com/crakjie/landing-page-hugo">landing-page-hugo</a>
-		theme.
+                Built with <a href="https://gohugo.io">Hugo</a> and the
+                <a href="https://github.com/crakjie/landing-page-hugo">landing-page-hugo</a> theme.
             </div>
         </div>
     </div>
 </footer>
 {{ partial "js.html" . }}
+
+<script>
+    if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+            if (!user) {
+                window.netlifyIdentity.on("login", () => {
+                    document.location.href = "/admin/";
+                });
+            }
+        });
+    }
+</script>
 </body>
+
 </html>
